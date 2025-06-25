@@ -129,12 +129,60 @@ public:
         cout << "Daftar kontak berhasil diekspor ke " << filename << "\n";
     }
 
+    void menu() {Add commentMore actions
+        int pil, pos;
+        string n, no, e;
+        do {
+    #ifdef _WIN32
+            system("cls");
+    #else
+            cout << "\033[2J\033[H";
+    #endif
+            cout << "\n=== MENU DAFTAR KONTAK ===\n"
+                 << "1. Tambah Awal\n2. Tambah Akhir\n3. Tambah Tengah\n4. Hapus\n5. Tampilkan\n6. Urutkan Nama\n7. Cari Kontak\n8. Edit Kontak\n9. Ekspor ke CSV\n0. Keluar\nPilih: ";
+            cin >> pil; cin.ignore();
+            switch (pil) {
+                case 1:
+                    cout << "Nama: "; getline(cin, n);
+                    cout << "Nomor: "; getline(cin, no);
+                    cout << "Email: "; getline(cin, e);
+                    addFirst(n, no, e); pause(); break;
+                case 2:
+                    cout << "Nama: "; getline(cin, n);
+                    cout << "Nomor: "; getline(cin, no);
+                    cout << "Email: "; getline(cin, e);
+                    addLast(n, no, e); pause(); break;
+                case 3:
+                    cout << "Nama: "; getline(cin, n);
+                    cout << "Nomor: "; getline(cin, no);
+                    cout << "Email: "; getline(cin, e);
+                    cout << "Posisi: "; cin >> pos; cin.ignore();
+                    insert(n, no, e, pos); pause(); break;
+                case 4:
+                    cout << "Posisi yang dihapus: "; cin >> pos; cin.ignore();
+                    remove(pos); pause(); break;
+                case 5:
+                    print(); pause(); break;
+                case 6:
+                    sortByName(); pause(); break;
+                case 7: {
+                    string key;
+                    cout << "Masukkan nama yang dicari: "; getline(cin, key);
+                    searchByName(key); pause(); break; }
+                case 8:
+                    cout << "Masukkan posisi kontak yang akan diedit: "; cin >> pos; cin.ignore();
+                    edit(pos); pause(); break;
+                case 9:
+                    exportCSV(); pause(); break;
+            }
+        } while (pil != 0);
+    }
 
-
+    void pause() const { cout << "Tekan ENTER untuk lanjut..."; cin.get(); }
 };
 
 int main() {
     KontakList daftar;
-    // daftar.menu(); // menu akan ditambah di commit berikutnya
+    daftar.menu();
     return 0;
 }
