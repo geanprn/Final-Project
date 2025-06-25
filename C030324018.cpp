@@ -31,6 +31,16 @@ public:
         else { tail->next = node; tail = node; }
         cout << "Kontak ditambah di akhir.\n";
     }
+
+    void insert(const string& n, const string& no, const string& e, int pos) {Add commentMore actions
+        if (!head || pos <= 1) { cout << "Posisi tidak valid!\n"; return; }
+        Kontak* cur = head; int i = 1;
+        while (cur && i < pos - 1) { cur = cur->next; i++; }
+        if (!cur || !cur->next) { cout << "Posisi terlalu besar!\n"; return; }
+        Kontak* node = new Kontak(n, no, e);
+        node->next = cur->next; cur->next = node;
+        cout << "Kontak ditambah di posisi " << pos << ".\n";
+    }
     
 };
 
