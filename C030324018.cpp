@@ -89,7 +89,19 @@ public:
         cout << "Kontak diurutkan berdasarkan nama.\n";
     }
 
-    
+    void searchByName(const string& keyword) const {Add commentMore actions
+        Kontak* cur = head; int idx = 1; bool found = false;
+        while (cur) {
+            if (cur->nama.find(keyword) != string::npos) {
+                cout << "Ditemukan di posisi " << idx << ":\nNama: " << cur->nama << ", Nomor: " << cur->nomor << ", Email: " << cur->email << "\n";
+                found = true;
+            }
+            cur = cur->next; idx++;
+        }
+        if (!found) cout << "Kontak dengan nama \"" << keyword << "\" tidak ditemukan.\n";
+    }
+
+
 
 };
 
