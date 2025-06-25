@@ -70,6 +70,27 @@ public:
         cout << string(64, '-') << endl;
     }
 
+    void sortByName() {Add commentMore actions
+        if (!head || !head->next) return;
+        bool swapped;
+        do {
+            swapped = false;
+            Kontak* cur = head;
+            while (cur->next) {
+                if (cur->nama > cur->next->nama) {
+                    swap(cur->nama, cur->next->nama);
+                    swap(cur->nomor, cur->next->nomor);
+                    swap(cur->email, cur->next->email);
+                    swapped = true;
+                }
+                cur = cur->next;
+            }
+        } while (swapped);
+        cout << "Kontak diurutkan berdasarkan nama.\n";
+    }
+
+    
+
 };
 
 int main() {
