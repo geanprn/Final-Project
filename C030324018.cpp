@@ -1,4 +1,4 @@
-#include <iostream>Add commentMore actions
+#include <iostream>
 #include <string>
 #include <iomanip>
 #include <fstream>
@@ -18,7 +18,7 @@ class KontakList {
 public:
     ~KontakList() { while (head) { Kontak* t = head; head = head->next; delete t; } }
 
-    void addFirst(const string& n, const string& no, const string& e) {Add commentMore actions
+    void addFirst(const string& n, const string& no, const string& e) {
         Kontak* node = new Kontak(n, no, e);
         if (!head) head = tail = node;
         else { node->next = head; head = node; }
@@ -32,7 +32,7 @@ public:
         cout << "Kontak ditambah di akhir.\n";
     }
 
-    void insert(const string& n, const string& no, const string& e, int pos) {Add commentMore actions
+    void insert(const string& n, const string& no, const string& e, int pos) {
         if (!head || pos <= 1) { cout << "Posisi tidak valid!\n"; return; }
         Kontak* cur = head; int i = 1;
         while (cur && i < pos - 1) { cur = cur->next; i++; }
@@ -42,7 +42,7 @@ public:
         cout << "Kontak ditambah di posisi " << pos << ".\n";
     }
 
-    void remove(int pos) {Add commentMore actions
+    void remove(int pos) {
         if (!head || pos < 1) { cout << "List kosong/posisi tidak valid!\n"; return; }
         if (pos == 1) {
             Kontak* t = head; head = head->next; delete t;
@@ -58,7 +58,7 @@ public:
         cout << "Kontak posisi " << pos << " dihapus.\n";
     }
 
-    void print() const {Add commentMore actions
+    void print() const {
         if (!head) { cout << "Daftar kontak kosong.\n"; return; }
         cout << left << setw(5) << "No" << setw(18) << "Nama" << setw(16) << "Nomor" << setw(25) << "Email" << endl
              << string(64, '-') << endl;
@@ -70,7 +70,7 @@ public:
         cout << string(64, '-') << endl;
     }
 
-    void sortByName() {Add commentMore actions
+    void sortByName() {
         if (!head || !head->next) return;
         bool swapped;
         do {
@@ -89,7 +89,7 @@ public:
         cout << "Kontak diurutkan berdasarkan nama.\n";
     }
 
-    void searchByName(const string& keyword) const {Add commentMore actions
+    void searchByName(const string& keyword) const {
         Kontak* cur = head; int idx = 1; bool found = false;
         while (cur) {
             if (cur->nama.find(keyword) != string::npos) {
@@ -101,7 +101,7 @@ public:
         if (!found) cout << "Kontak dengan nama \"" << keyword << "\" tidak ditemukan.\n";
     }
 
-    void edit(int pos) {Add commentMore actions
+    void edit(int pos) {
         if (!head || pos < 1) { cout << "List kosong/posisi tidak valid!\n"; return; }
         Kontak* cur = head; int idx = 1;
         while (cur && idx < pos) { cur = cur->next; idx++; }
@@ -116,7 +116,7 @@ public:
         cout << "Kontak pada posisi " << pos << " berhasil diedit.\n";
     }
 
-    void exportCSV(const string& filename = "kontak.csv") const {Add commentMore actions
+    void exportCSV(const string& filename = "kontak.csv") const {
         ofstream file(filename);
         if (!file) { cout << "Gagal membuka file untuk menulis.\n"; return; }
         file << "No,Nama,Nomor,Email\n";
@@ -129,7 +129,7 @@ public:
         cout << "Daftar kontak berhasil diekspor ke " << filename << "\n";
     }
 
-    void menu() {Add commentMore actions
+    void menu() {
         int pil, pos;
         string n, no, e;
         do {
