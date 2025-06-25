@@ -101,6 +101,21 @@ public:
         if (!found) cout << "Kontak dengan nama \"" << keyword << "\" tidak ditemukan.\n";
     }
 
+    void edit(int pos) {Add commentMore actions
+        if (!head || pos < 1) { cout << "List kosong/posisi tidak valid!\n"; return; }
+        Kontak* cur = head; int idx = 1;
+        while (cur && idx < pos) { cur = cur->next; idx++; }
+        if (!cur) { cout << "Posisi tidak ditemukan!\n"; return; }
+        string n, no, e;
+        cout << "Edit Nama (lama: " << cur->nama << "): "; getline(cin, n);
+        cout << "Edit Nomor (lama: " << cur->nomor << "): "; getline(cin, no);
+        cout << "Edit Email (lama: " << cur->email << "): "; getline(cin, e);
+        if (!n.empty()) cur->nama = n;
+        if (!no.empty()) cur->nomor = no;
+        if (!e.empty()) cur->email = e;
+        cout << "Kontak pada posisi " << pos << " berhasil diedit.\n";
+    }
+
 
 
 };
