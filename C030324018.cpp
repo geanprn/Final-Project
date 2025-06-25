@@ -116,6 +116,19 @@ public:
         cout << "Kontak pada posisi " << pos << " berhasil diedit.\n";
     }
 
+    void exportCSV(const string& filename = "kontak.csv") const {Add commentMore actions
+        ofstream file(filename);
+        if (!file) { cout << "Gagal membuka file untuk menulis.\n"; return; }
+        file << "No,Nama,Nomor,Email\n";
+        Kontak* cur = head; int idx = 1;
+        while (cur) {
+            file << idx++ << ',' << '"' << cur->nama << '"' << ',' << '"' << cur->nomor << '"' << ',' << '"' << cur->email << '"' << '\n';
+            cur = cur->next;
+        }
+        file.close();
+        cout << "Daftar kontak berhasil diekspor ke " << filename << "\n";
+    }
+
 
 
 };
