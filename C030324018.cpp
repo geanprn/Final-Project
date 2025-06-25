@@ -58,8 +58,18 @@ public:
         cout << "Kontak posisi " << pos << " dihapus.\n";
     }
 
+    void print() const {Add commentMore actions
+        if (!head) { cout << "Daftar kontak kosong.\n"; return; }
+        cout << left << setw(5) << "No" << setw(18) << "Nama" << setw(16) << "Nomor" << setw(25) << "Email" << endl
+             << string(64, '-') << endl;
+        Kontak* cur = head; int idx = 1;
+        while (cur) {
+            cout << left << setw(5) << idx++ << setw(18) << cur->nama << setw(16) << cur->nomor << setw(25) << cur->email << endl;
+            cur = cur->next;
+        }
+        cout << string(64, '-') << endl;
+    }
 
-    
 };
 
 int main() {
