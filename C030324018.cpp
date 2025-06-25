@@ -41,6 +41,24 @@ public:
         node->next = cur->next; cur->next = node;
         cout << "Kontak ditambah di posisi " << pos << ".\n";
     }
+
+    void remove(int pos) {Add commentMore actions
+        if (!head || pos < 1) { cout << "List kosong/posisi tidak valid!\n"; return; }
+        if (pos == 1) {
+            Kontak* t = head; head = head->next; delete t;
+            if (!head) tail = nullptr;
+            cout << "Kontak posisi 1 dihapus.\n"; return;
+        }
+        Kontak* cur = head; int i = 1;
+        while (cur->next && i < pos - 1) { cur = cur->next; i++; }
+        if (!cur->next) { cout << "Posisi tidak ditemukan!\n"; return; }
+        Kontak* t = cur->next; cur->next = t->next;
+        if (t == tail) tail = cur;
+        delete t;
+        cout << "Kontak posisi " << pos << " dihapus.\n";
+    }
+
+
     
 };
 
